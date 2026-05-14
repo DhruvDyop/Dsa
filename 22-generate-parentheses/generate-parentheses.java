@@ -1,0 +1,19 @@
+class Solution {
+    List<String> ans = new ArrayList(); 
+
+    public List<String> generateParenthesis(int n) {
+        dfs(n, 0, 0, "");
+        return ans;
+    }
+
+    public void dfs(int n, int left, int right, String cur) {
+        if (left == n && right == n) {
+            ans.add(cur);
+            return;
+        }
+        if (left < n)
+            dfs(n, left + 1, right, cur + "(");
+        if (right < left)
+            dfs(n, left, right + 1, cur + ")");
+    }
+}
